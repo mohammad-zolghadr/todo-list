@@ -1,0 +1,267 @@
+@import url(./assets/styles/fonts.css);
+
+*{
+    padding: 0;
+    margin: 0;
+    text-decoration: none;
+    border: none;
+    outline: none;
+    direction: rtl;
+    box-sizing: border-box;
+}
+
+:root{
+    --primary-color : #e49a12;
+    --secondary-color : #f2d49c;
+    --bg-color : #222222 ;
+    --bg-color--darker : #191919 ;
+    --bg-color--lighter : #2a2a2a ;
+    --main-text-color : #d3d3d3 ;
+    --second-text-color : #616161 ;
+    --red-color : #d61111 ;
+    --green-color : #09ce1a ;
+    --mp-size :10px;
+    --mp-size :-10px;
+    font-size: 16px;
+}
+body{
+    background-color: var(--bg-color);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: var(--mp-size);
+    font-family: iranyekan;
+    font-weight: 300;
+    color: var(--main-text-color);
+}
+
+h1,h2{
+    font-family: iranyekan;
+    font-weight: 850;
+}
+
+header{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+header h2{
+    font-size: 1.3rem;
+    margin: 10px;
+}
+header p{
+    font-size: 0.7rem;
+}
+
+main{
+    width: 100%;
+}
+
+.todo-input{
+    display: flex;
+    align-items: center;
+    background-color:var(--bg-color--darker) ;
+    padding: 5px 25px;
+    border-radius: 50px;
+    margin: 5vh 30px 0 30px;
+}
+
+form{
+    flex: 1;
+}
+
+.inp-task , .inp-time{
+    width: 40%;
+    background-color: transparent;
+    color: var(--second-text-color);
+    font-family: iranyekan;
+    font-weight: 300;
+    font-size: 0.7rem;
+    border-right: 2px solid var(--primary-color);
+    padding: 0 10px 0 0;
+    transition:all 0.5s ease;
+}
+
+.inp-task:focus , .inp-time:focus{
+    border-radius: 20px;
+    color: var(--main-text-color);
+}
+
+.todo-input button{
+    background-color: transparent;
+    color: var(--second-text-color);
+    padding: 8px;
+    font-size: 1.2rem;
+    cursor: pointer;
+    transition: all 0.3s ease-in-out;
+}
+.todo-input button:hover{
+    color: var(--primary-color);
+}
+
+
+.task-title{
+    color: var(--main-text-color);
+    text-align: center;
+    margin: 10px;
+    position: relative;
+}
+.task-title span{
+    padding: 0 15px;
+    background-color: var(--bg-color);
+    font-size: 1rem;
+}
+.task-title:before , .task-title:after{
+    content: "";
+    display:block;
+    width: 50%;
+    height:2px;
+    background: var(--second-text-color);
+    position: absolute;
+    border-radius: 5px;
+    left: 0;
+    top: 50%;
+    z-index: -2;
+    }
+   .task-title:after{
+    right: 0;
+    top: 50%;
+    }
+
+
+
+.todo-done , .todo-undone{
+    margin : 10vh 20px 0 20px;
+    display: none;
+}
+
+.todo-item{
+    background-color: var(--bg-color--lighter);
+    padding: 10px 25px;
+    display: flex;
+    align-items: center;
+    border-radius: 50px;
+    max-width: 80%;
+    margin: 15px auto;
+}
+.todo-item-title{
+    flex : 1;
+    font-size: 0.7rem;
+    font-weight: 850;
+}
+.todo-item-time{
+    font-size: 0.7rem;
+    margin-left:10px
+}
+.todo-item-remove{
+    background-color: transparent;
+    color: var(--second-text-color);
+    font-size: 1rem;
+    margin: 0 10px 0 0;
+    cursor: pointer;
+}
+.todo-item-remove:hover{
+    color: var(--red-color);
+}
+
+.circle-done{
+    display: inline-block;
+    padding: 10px;
+    border-radius: 50%;
+    width: 1rem;
+    height: 1rem;
+}
+.todo-item button{
+    background-color: transparent;
+    cursor: pointer;
+    transition: 0.1s;
+}
+.todo-item button:hover{
+    opacity: 0.5;
+}
+.green{
+    background-color: var(--green-color);
+}
+.red{
+    background-color: var(--red-color);
+}
+.todo-done-items{
+    opacity: 0.3;
+}
+.todo-done-items {
+    text-decoration: line-through;
+}
+
+@media (min-width:600px){
+    main{
+        max-width: 80%;
+    }
+}
+
+@media (min-width:768px){
+    main{
+        max-width: 70%;
+    }
+}
+@media (min-width:1200px){
+    main{
+        max-width: 50%;
+    }
+}
+
+
+/*======================== Modal =============================*/
+
+
+.btnModal:hover{
+    transform: translate(0 , -3px);
+    background-color: var(--primary-color);
+    color: var(--bg-color);
+}
+
+.modal{
+    background-color: #222222;
+    padding: 15px;
+    border-radius: 10px;
+    box-shadow: 5px 5px 10px #000000 , -5px -5px 10px #131313;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    transition: all 0.3s ease-in-out;
+    visibility: hidden;
+    opacity: 0;
+    /* transform : translate(0 , -100vh); */
+    z-index: 6;
+}
+
+.modal p{
+    font-family: iranyekan;
+    font-size: 0.8rem;
+    font-weight: 500;
+    text-align: center;
+    margin: 10px;
+    color: var(--secondary-color);
+}
+.btnModal{
+    background-color: #191919;
+    padding: 8px 50px;
+    margin-top: 15px;
+    border-radius: 20px;
+    color: #767676;
+    cursor: pointer;
+    transition: 0.3s;
+    font-size: 0.8rem;
+    font-weight: 700;
+    font-family: iranyekan;
+}
+
+.backdrop{
+    position: fixed;
+    visibility: hidden;
+    width: 100%;
+    height: 100vh;
+    margin-top: var(--mp-size-m);
+    background-color: #0a0a0a;
+    opacity: 0.7;
+    z-index: 5;
+}
